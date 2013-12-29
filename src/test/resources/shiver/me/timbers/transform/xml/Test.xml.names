@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This is a comment -->
+<[Name]test[Name]>
+    <[Name]one[Name]>one</[Name]one[Name]>
+    <[Name]two[Name]>2</[Name]two[Name]>
+    <[Name]three[Name]/>
+    <[Name]four[Name] five="test attribute"/>
+</[Name]test[Name]>

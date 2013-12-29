@@ -1,0 +1,8 @@
+[XMLDeclOpen]<?xml [XMLDeclOpen][Name]version[Name]['=']=['='][STRING]"1.0"[STRING] [Name]encoding[Name]['=']=['='][STRING]"ISO-8859-1"[STRING][SPECIAL_CLOSE]?>[SPECIAL_CLOSE][SEA_WS]
+[SEA_WS][COMMENT]<!-- This is a comment -->[COMMENT][SEA_WS]
+[SEA_WS]['<']<['<'][Name]test[Name]['>']>['>'][SEA_WS]
+    [SEA_WS]['<']<['<'][Name]one[Name]['>']>['>'][TEXT]one[TEXT]['<']<['<']['/']/['/'][Name]one[Name]['>']>['>'][SEA_WS]
+    [SEA_WS]['<']<['<'][Name]two[Name]['>']>['>'][TEXT]2[TEXT]['<']<['<']['/']/['/'][Name]two[Name]['>']>['>'][SEA_WS]
+    [SEA_WS]['<']<['<'][Name]three[Name]['/>']/>['/>'][SEA_WS]
+    [SEA_WS]['<']<['<'][Name]four[Name] [Name]five[Name]['=']=['='][STRING]"test attribute"[STRING]['/>']/>['/>'][SEA_WS]
+[SEA_WS]['<']<['<']['/']/['/'][Name]test[Name]['>']>['>']

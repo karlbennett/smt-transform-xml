@@ -1,0 +1,8 @@
+[prolog][document]<?xml [document][prolog][attribute]version[attribute]="1.0" [attribute]encoding[attribute]="ISO-8859-1"?>[misc]
+[misc][misc]<!-- This is a comment -->[misc][misc]
+[misc][element]<[element]test>[chardata][content]
+    [content][chardata][element]<[element]one>[chardata][content]one[content][chardata]</one>[chardata]
+    [chardata][element]<[element]two>[chardata][content]2[content][chardata]</two>[chardata]
+    [chardata][element]<[element]three/>[chardata]
+    [chardata][element]<[element]four [attribute]five[attribute]="test attribute"/>[chardata]
+[chardata]</test>

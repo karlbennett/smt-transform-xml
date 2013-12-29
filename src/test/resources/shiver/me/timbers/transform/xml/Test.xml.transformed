@@ -1,0 +1,8 @@
+[XMLDeclOpen][prolog][document]<?xml [document][prolog][XMLDeclOpen][classDefinition][Name][attribute]version[attribute][Name][classDefinition][classDefinition]['=']=['='][classDefinition][classDefinition][STRING]"1.0"[STRING][classDefinition] [classDefinition][Name][attribute]encoding[attribute][Name][classDefinition][classDefinition]['=']=['='][classDefinition][classDefinition][STRING]"ISO-8859-1"[STRING][classDefinition][SPECIAL_CLOSE]?>[SPECIAL_CLOSE][SEA_WS][misc]
+[misc][SEA_WS][COMMENT][misc]<!-- This is a comment -->[misc][COMMENT][SEA_WS][misc]
+[misc][SEA_WS]['<'][element]<[element]['<'][Name]test[Name]['>']>['>'][SEA_WS][chardata][content]
+    [content][chardata][SEA_WS]['<'][element]<[element]['<'][Name]one[Name]['>']>['>'][TEXT][chardata][content]one[content][chardata][TEXT]['<']<['<']['/']/['/'][Name]one[Name]['>']>['>'][SEA_WS][chardata]
+    [chardata][SEA_WS]['<'][element]<[element]['<'][Name]two[Name]['>']>['>'][TEXT][chardata][content]2[content][chardata][TEXT]['<']<['<']['/']/['/'][Name]two[Name]['>']>['>'][SEA_WS][chardata]
+    [chardata][SEA_WS]['<'][element]<[element]['<'][Name]three[Name]['/>']/>['/>'][SEA_WS][chardata]
+    [chardata][SEA_WS]['<'][element]<[element]['<'][Name]four[Name] [classDefinition][Name][attribute]five[attribute][Name][classDefinition][classDefinition]['=']=['='][classDefinition][classDefinition][STRING]"test attribute"[STRING][classDefinition]['/>']/>['/>'][SEA_WS][chardata]
+[chardata][SEA_WS]['<']<['<']['/']/['/'][Name]test[Name]['>']>['>']
