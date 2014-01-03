@@ -4,7 +4,8 @@ import org.junit.Test;
 import shiver.me.timbers.transform.language.test.RuleAndTokenTestTemplate;
 
 import static shiver.me.timbers.transform.language.test.RuleAndTokenTestUtils.testEachTransformationInPackage;
-import static shiver.me.timbers.transform.xml.TransformationsConstants.*;
+import static shiver.me.timbers.transform.xml.TransformationsConstants.RULES_PACKAGE_NAME;
+import static shiver.me.timbers.transform.xml.TransformationsConstants.TYPES_PACKAGE_NAME;
 
 public class RuleAndTokenTest implements RuleAndTokenTestTemplate {
 

@@ -5,20 +5,16 @@ import shiver.me.timbers.transform.IndividualTransformations;
 import shiver.me.timbers.transform.antlr4.TokenTransformation;
 import shiver.me.timbers.transform.language.test.TransformerTestTemplate;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 import static org.junit.Assert.assertEquals;
 import static shiver.me.timbers.transform.antlr4.NullTokenTransformation.NULL_TOKEN_TRANSFORMATION;
-import static shiver.me.timbers.transform.xml.FileConstants.INVALID_TEST_FILE_NAME;
-import static shiver.me.timbers.transform.xml.FileConstants.SOURCE;
+import static shiver.me.timbers.transform.xml.FileConstants.INVALID_TEST_FILE_SOURCE;
+import static shiver.me.timbers.transform.xml.FileConstants.TEST_FILE_SOURCE;
 import static shiver.me.timbers.transform.xml.FileConstants.TRANSFORMED_COMMENTS_SOURCE;
 import static shiver.me.timbers.transform.xml.FileConstants.TRANSFORMED_INVALID_SOURCE;
 import static shiver.me.timbers.transform.xml.FileConstants.TRANSFORMED_NAMES_SOURCE;
 import static shiver.me.timbers.transform.xml.FileConstants.TRANSFORMED_RULES_SOURCE;
-import static shiver.me.timbers.transform.xml.FileConstants.TRANSFORMED_SOURCE;
+import static shiver.me.timbers.transform.xml.FileConstants.TRANSFORMED_TEST_FILE_SOURCE;
 import static shiver.me.timbers.transform.xml.FileConstants.TRANSFORMED_TYPES_SOURCE;
-import static shiver.me.timbers.transform.xml.FileConstants.readTestFile;
 import static shiver.me.timbers.transform.xml.TransformationsConstants.ALL_TRANSFORMATIONS;
 import static shiver.me.timbers.transform.xml.TransformationsConstants.COMMENT_TRANSFORMATIONS;
 import static shiver.me.timbers.transform.xml.TransformationsConstants.NAMES_TRANSFORMATIONS;
@@ -54,8 +50,8 @@ public class XmlTransformerTest implements TransformerTestTemplate {
     @Override
     public void testTransform() {
 
-        assertEquals("the source should be Transformed correctly.", TRANSFORMED_SOURCE,
-                new XmlTransformer(PARENT_RULE_TRANSFORMATIONS).transform(readTestFile(), ALL_TRANSFORMATIONS));
+        assertEquals("the source should be Transformed correctly.", TRANSFORMED_TEST_FILE_SOURCE,
+                new XmlTransformer(PARENT_RULE_TRANSFORMATIONS).transform(TEST_FILE_SOURCE, ALL_TRANSFORMATIONS));
     }
 
     @Test
@@ -63,7 +59,7 @@ public class XmlTransformerTest implements TransformerTestTemplate {
     public void testTransformKeywordsOnly() {
 
         assertEquals("only the names should be transformed.", TRANSFORMED_NAMES_SOURCE,
-                new XmlTransformer().transform(readTestFile(), NAMES_TRANSFORMATIONS));
+                new XmlTransformer().transform(TEST_FILE_SOURCE, NAMES_TRANSFORMATIONS));
     }
 
     @Test
@@ -71,7 +67,7 @@ public class XmlTransformerTest implements TransformerTestTemplate {
     public void testTransformCommentsOnly() {
 
         assertEquals("the source should be Transformed correctly.", TRANSFORMED_COMMENTS_SOURCE,
-                new XmlTransformer().transform(readTestFile(), COMMENT_TRANSFORMATIONS));
+                new XmlTransformer().transform(TEST_FILE_SOURCE, COMMENT_TRANSFORMATIONS));
     }
 
     @Test
@@ -79,7 +75,7 @@ public class XmlTransformerTest implements TransformerTestTemplate {
     public void testTransformWithInvalidSource() {
 
         assertEquals("the source should be Transformed correctly.", TRANSFORMED_INVALID_SOURCE,
-                new XmlTransformer(PARENT_RULE_TRANSFORMATIONS).transform(readTestFile(INVALID_TEST_FILE_NAME),
+                new XmlTransformer(PARENT_RULE_TRANSFORMATIONS).transform(INVALID_TEST_FILE_SOURCE,
                         ALL_TRANSFORMATIONS));
     }
 
@@ -88,7 +84,7 @@ public class XmlTransformerTest implements TransformerTestTemplate {
     public void testTransformWithTypesOnly() {
 
         assertEquals("the source should be Transformed correctly.", TRANSFORMED_TYPES_SOURCE,
-                new XmlTransformer().transform(readTestFile(), TYPES_TRANSFORMATIONS));
+                new XmlTransformer().transform(TEST_FILE_SOURCE, TYPES_TRANSFORMATIONS));
     }
 
     @Test
@@ -96,15 +92,15 @@ public class XmlTransformerTest implements TransformerTestTemplate {
     public void testTransformWithRulesOnly() {
 
         assertEquals("the source should be Transformed correctly.", TRANSFORMED_RULES_SOURCE,
-                new XmlTransformer().transform(readTestFile(), RULES_TRANSFORMATIONS));
+                new XmlTransformer().transform(TEST_FILE_SOURCE, RULES_TRANSFORMATIONS));
     }
 
     @Test
     @Override
     public void testTransformWithNoTransformations() {
 
-        assertEquals("the source should be Transformed correctly.", SOURCE,
-                new XmlTransformer().transform(readTestFile(),
+        assertEquals("the source should be Transformed correctly.", TEST_FILE_SOURCE,
+                new XmlTransformer().transform(TEST_FILE_SOURCE,
                         new IndividualTransformations<TokenTransformation>(NULL_TOKEN_TRANSFORMATION))
         );
     }
@@ -113,31 +109,20 @@ public class XmlTransformerTest implements TransformerTestTemplate {
     @Override
     public void testTransformWithIrrelevantTransformations() {
 
-        assertEquals("the source should be Transformed correctly.", SOURCE,
-                new XmlTransformer(UNUSED_TRANSFORMATIONS).transform(readTestFile(), UNUSED_TRANSFORMATIONS));
-    }
-
-    @Test(expected = RuntimeException.class)
-    @Override
-    public void testTransformWithClosedStream() throws IOException {
-
-        final InputStream stream = readTestFile();
-
-        stream.close();
-
-        new XmlTransformer().transform(stream, ALL_TRANSFORMATIONS);
+        assertEquals("the source should be Transformed correctly.", TEST_FILE_SOURCE,
+                new XmlTransformer(UNUSED_TRANSFORMATIONS).transform(TEST_FILE_SOURCE, UNUSED_TRANSFORMATIONS));
     }
 
     @Test(expected = AssertionError.class)
     @Override
     public void testTransformWithNullTransformations() {
 
-        new XmlTransformer().transform(readTestFile(), null);
+        new XmlTransformer().transform(TEST_FILE_SOURCE, null);
     }
 
     @Test(expected = NullPointerException.class)
     @Override
-    public void testTransformWithNullInputStream() {
+    public void testTransformWithNullInput() {
 
         new XmlTransformer().transform(null, ALL_TRANSFORMATIONS);
     }
