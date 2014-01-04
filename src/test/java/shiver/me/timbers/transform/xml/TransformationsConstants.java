@@ -7,7 +7,6 @@ import shiver.me.timbers.transform.IndividualTransformations;
 import shiver.me.timbers.transform.Transformations;
 import shiver.me.timbers.transform.antlr4.CompositeTokenTransformation;
 import shiver.me.timbers.transform.antlr4.CompoundTransformations;
-import shiver.me.timbers.transform.antlr4.TokenApplier;
 import shiver.me.timbers.transform.antlr4.TokenTransformation;
 import shiver.me.timbers.transform.language.test.WrappingTokenApplier;
 import shiver.me.timbers.transform.xml.rules.Attribute;
@@ -15,9 +14,9 @@ import shiver.me.timbers.transform.xml.types.Comment;
 import shiver.me.timbers.transform.xml.types.Name;
 
 import java.util.Arrays;
+import java.util.LinkedList;
 
 import static java.util.Arrays.asList;
-import static org.mockito.Mockito.mock;
 import static shiver.me.timbers.transform.antlr4.NullTokenTransformation.NULL_TOKEN_TRANSFORMATION;
 import static shiver.me.timbers.transform.language.test.TransformationsUtils.buildWrappingTransformationsFromPackageName;
 
@@ -25,8 +24,6 @@ public final class TransformationsConstants {
 
     private TransformationsConstants() {
     }
-
-    public static final TokenApplier MOCK_APPLIER = mock(TokenApplier.class);
 
     public static final String TYPES_PACKAGE_NAME = "shiver.me.timbers.transform.xml.types";
     public static final String RULES_PACKAGE_NAME = "shiver.me.timbers.transform.xml.rules";
@@ -42,10 +39,10 @@ public final class TransformationsConstants {
     @SuppressWarnings("unchecked")
     public static final Transformations<TokenTransformation> ALL_TRANSFORMATIONS =
             new IndividualTransformations<TokenTransformation>(
-                    Arrays.<Iterable<TokenTransformation>>asList(
-                            TYPES_TRANSFORMATIONS,
-                            RULES_TRANSFORMATIONS
-                    ),
+                    new LinkedList<TokenTransformation>() {{
+                        addAll(TYPES_TRANSFORMATIONS.asCollection());
+                        addAll(RULES_TRANSFORMATIONS.asCollection());
+                    }},
                     NULL_TOKEN_TRANSFORMATION);
 
     public static final Transformations<TokenTransformation> UNUSED_TRANSFORMATIONS =
