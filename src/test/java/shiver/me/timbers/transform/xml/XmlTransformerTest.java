@@ -1,7 +1,7 @@
 package shiver.me.timbers.transform.xml;
 
 import org.junit.Test;
-import shiver.me.timbers.transform.IndividualTransformations;
+import shiver.me.timbers.transform.IterableTransformations;
 import shiver.me.timbers.transform.antlr4.TokenTransformation;
 import shiver.me.timbers.transform.language.test.TransformerTestTemplate;
 
@@ -101,7 +101,7 @@ public class XmlTransformerTest implements TransformerTestTemplate {
 
         assertEquals("the source should be Transformed correctly.", TEST_FILE_SOURCE,
                 new XmlTransformer().transform(TEST_FILE_SOURCE,
-                        new IndividualTransformations<TokenTransformation>(NULL_TOKEN_TRANSFORMATION))
+                        new IterableTransformations<TokenTransformation>(NULL_TOKEN_TRANSFORMATION))
         );
     }
 
