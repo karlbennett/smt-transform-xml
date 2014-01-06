@@ -3,7 +3,7 @@ package shiver.me.timbers.transform.xml;
 import org.antlr.v4.runtime.RuleContext;
 import org.antlr.v4.runtime.Token;
 import shiver.me.timbers.antlr4.xml.XMLParser;
-import shiver.me.timbers.transform.IterableTransformations;
+import shiver.me.timbers.transform.iterable.IterableTransformations;
 import shiver.me.timbers.transform.Transformations;
 import shiver.me.timbers.transform.antlr4.CompositeTokenTransformation;
 import shiver.me.timbers.transform.antlr4.CompoundTransformations;
