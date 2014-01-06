@@ -1,8 +1,8 @@
 package shiver.me.timbers.transform.xml;
 
 import org.junit.Test;
-import shiver.me.timbers.transform.iterable.IterableTransformations;
 import shiver.me.timbers.transform.antlr4.TokenTransformation;
+import shiver.me.timbers.transform.iterable.IterableTransformations;
 import shiver.me.timbers.transform.language.test.TransformerTestTemplate;
 
 import static org.junit.Assert.assertEquals;
