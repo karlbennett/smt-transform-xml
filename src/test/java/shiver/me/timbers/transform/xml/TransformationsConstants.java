@@ -6,8 +6,8 @@ import shiver.me.timbers.antlr4.xml.XMLParser;
 import shiver.me.timbers.transform.Transformations;
 import shiver.me.timbers.transform.antlr4.CompositeTokenTransformation;
 import shiver.me.timbers.transform.antlr4.CompoundTransformations;
+import shiver.me.timbers.transform.antlr4.IterableTokenTransformations;
 import shiver.me.timbers.transform.antlr4.TokenTransformation;
-import shiver.me.timbers.transform.iterable.IterableTransformations;
 import shiver.me.timbers.transform.language.test.WrappingTokenApplier;
 import shiver.me.timbers.transform.xml.rules.Attribute;
 import shiver.me.timbers.transform.xml.types.Comment;
@@ -17,7 +17,6 @@ import java.util.Arrays;
 import java.util.LinkedList;
 
 import static java.util.Arrays.asList;
-import static shiver.me.timbers.transform.antlr4.NullTokenTransformation.NULL_TOKEN_TRANSFORMATION;
 import static shiver.me.timbers.transform.language.test.TransformationsUtils.buildWrappingTransformationsFromPackageName;
 
 public final class TransformationsConstants {
@@ -29,38 +28,35 @@ public final class TransformationsConstants {
     public static final String RULES_PACKAGE_NAME = "shiver.me.timbers.transform.xml.rules";
 
     public static final Transformations<TokenTransformation> TYPES_TRANSFORMATIONS =
-            new IterableTransformations<TokenTransformation>(
-                    buildWrappingTransformationsFromPackageName(TYPES_PACKAGE_NAME), NULL_TOKEN_TRANSFORMATION);
+            new IterableTokenTransformations(buildWrappingTransformationsFromPackageName(TYPES_PACKAGE_NAME));
 
     public static final Transformations<TokenTransformation> RULES_TRANSFORMATIONS =
-            new IterableTransformations<TokenTransformation>(
-                    buildWrappingTransformationsFromPackageName(RULES_PACKAGE_NAME), NULL_TOKEN_TRANSFORMATION);
+            new IterableTokenTransformations(buildWrappingTransformationsFromPackageName(RULES_PACKAGE_NAME));
 
     @SuppressWarnings("unchecked")
     public static final Transformations<TokenTransformation> ALL_TRANSFORMATIONS =
-            new IterableTransformations<TokenTransformation>(
+            new IterableTokenTransformations(
                     new LinkedList<TokenTransformation>() {{
                         addAll(TYPES_TRANSFORMATIONS.asCollection());
                         addAll(RULES_TRANSFORMATIONS.asCollection());
-                    }},
-                    NULL_TOKEN_TRANSFORMATION);
+                    }});
 
     public static final Transformations<TokenTransformation> UNUSED_TRANSFORMATIONS =
-            new IterableTransformations<TokenTransformation>(
+            new IterableTokenTransformations(
                     Arrays.<TokenTransformation>asList(
                             new CompositeTokenTransformation("unused_one", new WrappingTokenApplier("unused_one")),
                             new CompositeTokenTransformation("unused_two", new WrappingTokenApplier("unused_two")),
                             new CompositeTokenTransformation("unused_three", new WrappingTokenApplier("unused_three"))
-                    ),
-                    NULL_TOKEN_TRANSFORMATION
+                    )
             );
 
     public static final Transformations<TokenTransformation> PARENT_RULE_TRANSFORMATIONS =
-            new IterableTransformations<TokenTransformation>(
+            new IterableTokenTransformations(
                     Arrays.<TokenTransformation>asList(
                             new CompositeTokenTransformation(Attribute.NAME,
                                     new WrappingTokenApplier("classDefinition"))
-                    ), NULL_TOKEN_TRANSFORMATION);
+                    )
+            );
 
     public static final Transformations<TokenTransformation> NAMES_TRANSFORMATIONS =
             new CompoundTransformations(

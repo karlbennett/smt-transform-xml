@@ -1,12 +1,10 @@
 package shiver.me.timbers.transform.xml;
 
 import org.junit.Test;
-import shiver.me.timbers.transform.antlr4.TokenTransformation;
-import shiver.me.timbers.transform.iterable.IterableTransformations;
+import shiver.me.timbers.transform.antlr4.IterableTokenTransformations;
 import shiver.me.timbers.transform.language.test.TransformerTestTemplate;
 
 import static org.junit.Assert.assertEquals;
-import static shiver.me.timbers.transform.antlr4.NullTokenTransformation.NULL_TOKEN_TRANSFORMATION;
 import static shiver.me.timbers.transform.xml.FileConstants.INVALID_TEST_FILE_SOURCE;
 import static shiver.me.timbers.transform.xml.FileConstants.TEST_FILE_SOURCE;
 import static shiver.me.timbers.transform.xml.FileConstants.TRANSFORMED_COMMENTS_SOURCE;
@@ -100,8 +98,7 @@ public class XmlTransformerTest implements TransformerTestTemplate {
     public void testTransformWithNoTransformations() {
 
         assertEquals("the source should be Transformed correctly.", TEST_FILE_SOURCE,
-                new XmlTransformer().transform(TEST_FILE_SOURCE,
-                        new IterableTransformations<TokenTransformation>(NULL_TOKEN_TRANSFORMATION))
+                new XmlTransformer().transform(TEST_FILE_SOURCE, new IterableTokenTransformations())
         );
     }
 
