@@ -1,4 +1,4 @@
-['<'][element][document]<[document][element]['<'][Name]one[Name]['>']>['>'][TEXT][chardata][content]one
-[content][chardata][TEXT]['<'][element]<[element]['<'][Name]two[Name]['>']>['>'][TEXT][chardata][content]2[content][chardata][TEXT]['<']<['<']['/']/['/'][Name]two[Name]['>']>['>'][SEA_WS][chardata]
+['<'][element][document]<[document][element]['<'][element][Name]one[Name][element][element]['>']>['>'][element][TEXT][chardata][content]one
+[content][chardata][TEXT]['<'][element]<[element]['<'][element][Name]two[Name][element][element]['>']>['>'][element][TEXT][chardata][content]2[content][chardata][TEXT]['<']<['<'][element]['/']/['/'][element][element][Name]two[Name][element][element]['>']>['>'][element][SEA_WS][chardata]
 [chardata][SEA_WS]['<']<['<']['/>']/>['/>'][SEA_WS][misc]
 [misc][SEA_WS]<four five=/>

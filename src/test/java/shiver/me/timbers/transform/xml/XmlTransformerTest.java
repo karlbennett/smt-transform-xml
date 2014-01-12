@@ -16,7 +16,6 @@ import static shiver.me.timbers.transform.xml.FileConstants.TRANSFORMED_TYPES_SO
 import static shiver.me.timbers.transform.xml.TransformationsConstants.ALL_TRANSFORMATIONS;
 import static shiver.me.timbers.transform.xml.TransformationsConstants.COMMENT_TRANSFORMATIONS;
 import static shiver.me.timbers.transform.xml.TransformationsConstants.NAMES_TRANSFORMATIONS;
-import static shiver.me.timbers.transform.xml.TransformationsConstants.PARENT_RULE_TRANSFORMATIONS;
 import static shiver.me.timbers.transform.xml.TransformationsConstants.RULES_TRANSFORMATIONS;
 import static shiver.me.timbers.transform.xml.TransformationsConstants.TYPES_TRANSFORMATIONS;
 import static shiver.me.timbers.transform.xml.TransformationsConstants.UNUSED_TRANSFORMATIONS;
@@ -32,24 +31,10 @@ public class XmlTransformerTest implements TransformerTestTemplate {
 
     @Test
     @Override
-    public void testCreateWithParentTransformations() {
-
-        new XmlTransformer(PARENT_RULE_TRANSFORMATIONS);
-    }
-
-    @Test(expected = AssertionError.class)
-    @Override
-    public void testCreateWithNullParentTransformations() {
-
-        new XmlTransformer(null);
-    }
-
-    @Test
-    @Override
     public void testTransform() {
 
         assertEquals("the source should be Transformed correctly.", TRANSFORMED_TEST_FILE_SOURCE,
-                new XmlTransformer(PARENT_RULE_TRANSFORMATIONS).transform(TEST_FILE_SOURCE, ALL_TRANSFORMATIONS));
+                new XmlTransformer().transform(TEST_FILE_SOURCE, ALL_TRANSFORMATIONS));
     }
 
     @Test
@@ -73,8 +58,7 @@ public class XmlTransformerTest implements TransformerTestTemplate {
     public void testTransformWithInvalidSource() {
 
         assertEquals("the source should be Transformed correctly.", TRANSFORMED_INVALID_SOURCE,
-                new XmlTransformer(PARENT_RULE_TRANSFORMATIONS).transform(INVALID_TEST_FILE_SOURCE,
-                        ALL_TRANSFORMATIONS));
+                new XmlTransformer().transform(INVALID_TEST_FILE_SOURCE, ALL_TRANSFORMATIONS));
     }
 
     @Test
@@ -107,7 +91,7 @@ public class XmlTransformerTest implements TransformerTestTemplate {
     public void testTransformWithIrrelevantTransformations() {
 
         assertEquals("the source should be Transformed correctly.", TEST_FILE_SOURCE,
-                new XmlTransformer(UNUSED_TRANSFORMATIONS).transform(TEST_FILE_SOURCE, UNUSED_TRANSFORMATIONS));
+                new XmlTransformer().transform(TEST_FILE_SOURCE, UNUSED_TRANSFORMATIONS));
     }
 
     @Test(expected = AssertionError.class)
