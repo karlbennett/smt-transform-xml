@@ -6,9 +6,8 @@ import shiver.me.timbers.transform.antlr4.Antlr4StringTransformer;
 import javax.activation.MimeType;
 
 /**
- * A StreamTransformer for XML, it will apply any Transformations that have names matching the different token and rule names.
- * These names can be found in the {@link XMLParser#tokenNames} and {@link XMLParser#ruleNames}
- * arrays.
+ * A StringTransformer for XML, it will apply any Transformations that have names matching the different token and rule
+ * names. These names can be found in the {@link XMLParser#tokenNames} and {@link XMLParser#ruleNames} arrays.
  */
 public class XmlTransformer extends Antlr4StringTransformer<XMLParser> {
 

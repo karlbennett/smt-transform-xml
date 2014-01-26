@@ -9,7 +9,6 @@ import shiver.me.timbers.transform.antlr4.CompoundTransformations;
 import shiver.me.timbers.transform.antlr4.IterableTokenTransformations;
 import shiver.me.timbers.transform.antlr4.TokenTransformation;
 import shiver.me.timbers.transform.language.test.WrappingTokenApplier;
-import shiver.me.timbers.transform.xml.rules.Attribute;
 import shiver.me.timbers.transform.xml.types.Comment;
 import shiver.me.timbers.transform.xml.types.Name;
 
@@ -47,14 +46,6 @@ public final class TransformationsConstants {
                             new CompositeTokenTransformation("unused_one", new WrappingTokenApplier("unused_one")),
                             new CompositeTokenTransformation("unused_two", new WrappingTokenApplier("unused_two")),
                             new CompositeTokenTransformation("unused_three", new WrappingTokenApplier("unused_three"))
-                    )
-            );
-
-    public static final Transformations<TokenTransformation> PARENT_RULE_TRANSFORMATIONS =
-            new IterableTokenTransformations(
-                    Arrays.<TokenTransformation>asList(
-                            new CompositeTokenTransformation(Attribute.NAME,
-                                    new WrappingTokenApplier("classDefinition"))
                     )
             );
 
