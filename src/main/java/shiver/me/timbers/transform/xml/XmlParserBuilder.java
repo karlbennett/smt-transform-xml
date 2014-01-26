@@ -24,6 +24,8 @@ public class XmlParserBuilder implements ParserBuilder<XMLParser> {
         final CharStream charStream = new ANTLRInputStream(source);
 
         final XMLLexer lexer = new XMLLexer(charStream);
+        lexer.removeErrorListeners();
+        lexer.addErrorListener(new LoggingErrorListener());
 
         final TokenStream tokenStream = new BufferedTokenStream(lexer);
 
